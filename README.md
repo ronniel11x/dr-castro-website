@@ -1,31 +1,16 @@
-# Dr. Joselito Joel R. Castro Jr. — Ophthalmology Website
+# React + Vite
 
-Professional portfolio website for Dr. Joselito Joel R. Castro Jr., MD, DPAO (Diplomate, Philippine Academy of Ophthalmology).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Overview
+Currently, two official plugins are available:
 
-A single-page responsive website showcasing ophthalmology services, clinic locations, and appointment booking functionality.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Features
+## React Compiler
 
-- **Hero Section** — Introduction with practice highlights
-- **About Section** — Doctor credentials and background
-- **Services** — Comprehensive eye care services (eye exams, cataract surgery, glaucoma, retinal care, pediatric ophthalmology)
-- **Clinic Locations** — Two clinic addresses with contact information
-- **Map** — Google Maps embed for primary location
-- **Appointment Form** — Contact form for booking consultations
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Technologies
+## Expanding the ESLint configuration
 
-- Pure HTML5, CSS3, JavaScript
-- Google Fonts (Cormorant Garamond, DM Sans)
-- Responsive design (mobile, tablet, desktop)
-- No external frameworks required
-
-## Usage
-
-Open `dr-castro-website.html` directly in any web browser.
-
-## Credits
-
-Developed for Dr. Joselito Joel R. Castro Jr., MD, DPAO — Ophthalmologist in Quezon City, Metro Manila, Philippines.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
