@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Joselito Joel R. Castro Jr., MD, DPAO — Ophthalmologist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --navy-mid: #152d52;
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --cream: #faf6f0;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-muted: #6b7a8d;
+    --border: rgba(201,169,110,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(11,31,58,0.97);
+    backdrop-filter: blur(12px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-weight: 300; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.72); text-decoration: none;
+    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 400; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    border: none; padding: 0.55rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,169,110,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(21,45,82,0.8) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* decorative circle */
+  .hero::after {
+    content: ''; position: absolute;
+    width: 520px; height: 520px;
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 50%;
+    right: 8%; top: 50%; transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .hero-text {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5% 6rem 8%;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+  .hero-badge span {
+    color: var(--gold); font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+  }
+  .hero-badge::before { content: '●'; color: var(--gold); font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 300; color: var(--white);
+    line-height: 1.12; letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--gold);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 400; margin-bottom: 1.8rem;
+  }
+  .hero-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.02rem; line-height: 1.75;
+    max-width: 440px; margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    text-decoration: none; padding: 0.9rem 2rem;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(201,169,110,0.5); color: var(--gold-light);
+    text-decoration: none; padding: 0.9rem 2rem;
+    font-size: 0.82rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1;
+    padding: 4rem 8% 4rem 2%;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 2.5rem;
+    max-width: 360px; width: 100%;
+    position: relative;
+  }
+  .hero-card::before {
+    content: ''; position: absolute;
+    top: -1px; left: 2rem; right: 2rem; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .eye-icon {
+    width: 64px; height: 64px; margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  .hero-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--gold-light);
+    font-weight: 400; margin-bottom: 1.2rem;
+  }
+  .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .hero-stat {
+    border: 1px solid rgba(201,169,110,0.12);
+    padding: 1rem; background: rgba(201,169,110,0.04);
+  }
+  .hero-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: var(--gold);
+    font-weight: 300; line-height: 1;
+    display: block; margin-bottom: 0.25rem;
+  }
+  .hero-stat .label {
+    font-size: 0.72rem; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 8%; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--navy); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--navy-mid); }
+  .divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 2rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+  .about-image-col { position: relative; }
+  .about-portrait {
+    width: 100%;
+    background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 100%);
+    aspect-ratio: 3/4;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .about-portrait::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,169,110,0.18) 0%, transparent 60%);
+  }
+  .portrait-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem; color: rgba(201,169,110,0.2);
+    font-weight: 300; letter-spacing: -0.05em;
+    z-index: 1; user-select: none;
+  }
+  .about-cert {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--gold); padding: 1.5rem;
+    text-align: center;
+  }
+  .about-cert .cert-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; color: var(--navy);
+    font-weight: 600; line-height: 1; display: block;
+  }
+  .about-cert .cert-label {
+    font-size: 0.65rem; color: var(--navy);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .about-content { padding-top: 1rem; }
+  .about-content p {
+    font-size: 1.02rem; line-height: 1.8;
+    color: #3a4a5c; margin-bottom: 1.2rem; font-weight: 300;
+  }
+  .credential-list { list-style: none; margin: 1.5rem 0 2rem; }
+  .credential-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.92rem; color: var(--text-muted);
+  }
+  .credential-list li::before { content: '◆'; color: var(--gold); font-size: 0.45rem; flex-shrink: 0; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(0,0,0,0.08); margin-top: 3rem; }
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 100%; height: 3px;
+    background: var(--gold);
+    transition: right 0.35s ease;
+  }
+  .service-card:hover::after { right: 0; }
+  .service-card:hover { background: #f9f5ef; transform: translateY(-3px); }
+  .service-icon {
+    width: 48px; height: 48px; margin-bottom: 1.5rem;
+    color: var(--gold);
+  }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 400;
+    color: var(--navy); margin-bottom: 0.75rem;
+  }
+  .service-card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); font-weight: 300; }
+
+  /* ── CLINICS ── */
+  #clinics { background: var(--navy); }
+  #clinics .section-title { color: var(--white); }
+  .clinics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .clinic-card {
+    border: 1px solid rgba(201,169,110,0.2);
+    padding: 2rem;
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.3s;
+  }
+  .clinic-card:hover { border-color: rgba(201,169,110,0.5); }
+  .clinic-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; color: rgba(201,169,110,0.15);
+    font-weight: 300; line-height: 1;
+    position: absolute; top: 1.2rem; right: 1.5rem;
+  }
+  .clinic-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--gold-light); margin-bottom: 1rem;
+  }
+  .clinic-detail {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .clinic-detail svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); }
+  .clinic-detail span { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .schedule-badge {
+    display: inline-block;
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 0.3rem 0.75rem;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-top: 0.75rem;
+  }
+
+  /* ── MAP ── */
+  #map-section { background: var(--white); padding: 0; }
+  .map-wrapper {
+    display: grid; grid-template-columns: 1fr 1.5fr;
+    min-height: 480px;
+  }
+  .map-info {
+    background: var(--navy); padding: 4rem 5%;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .map-info .section-label { color: var(--gold); }
+  .map-info .section-title { color: var(--white); font-size: 2rem; }
+  .map-info .divider { background: linear-gradient(90deg, var(--gold), transparent); }
+  .map-detail {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .map-detail svg { flex-shrink: 0; color: var(--gold); margin-top: 2px; }
+  .map-detail div strong { display: block; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
+  .map-detail div span { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+  .map-frame iframe {
+    width: 100%; height: 100%; min-height: 480px;
+    border: none; display: block;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  /* ── APPOINTMENT ── */
+  #appointment { background: var(--cream); }
+  .appt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .appt-form-wrap {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.07);
+    padding: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block; font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 500; margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem; color: var(--text-dark);
+    background: var(--cream); outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; background: var(--navy);
+    color: var(--gold); border: none;
+    padding: 1rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--navy-mid); }
+  .appt-info { padding-top: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--navy); display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+  }
+  .contact-item strong { display: block; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .contact-item span { font-size: 0.95rem; color: var(--text-dark); }
+  .trust-badges { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .trust-badge {
+    background: var(--navy); color: rgba(255,255,255,0.7);
+    padding: 0.6rem 1rem; font-size: 0.72rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-left: 3px solid var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070f1d;
+    padding: 3rem 8% 2rem;
+    border-top: 1px solid rgba(201,169,110,0.2);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .nav-logo { font-size: 1.2rem; margin-bottom: 1rem; display: block; }
+  .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.7; font-weight: 300; max-width: 280px; }
+  .footer-col h4 {
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1rem; font-weight: 500;
+  }
+  .footer-col a, .footer-col p {
+    display: block; font-size: 0.85rem;
+    color: rgba(255,255,255,0.45); text-decoration: none;
+    margin-bottom: 0.5rem; font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--navy); border: 1px solid var(--gold);
+    color: var(--gold-light); padding: 1rem 1.5rem;
+    font-size: 0.88rem; transform: translateY(120%);
+    transition: transform 0.4s; z-index: 999;
+    max-width: 320px;
+  }
+  #toast.show { transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-text { padding: 4rem 8%; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-cert { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .clinics-grid { grid-template-columns: 1fr; }
+    .appt-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .map-wrapper { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 4rem 6%; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Dr. J.J.R. Castro Jr.
+    <span>MD, DPAO · Ophthalmologist</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clinics">Clinics</a></li>
+    <li><a href="#appointment">Contact</a></li>
+  </ul>
+  <a href="#appointment" class="nav-cta">Book Appointment</a>
+  <div class="hamburger" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge"><span>Accepting New Patients</span></div>
+    <h1>Caring for Your<br><em>Vision & Eyes</em></h1>
+    <p class="hero-title">Diplomate, Philippine Academy of Ophthalmology</p>
+    <p class="hero-desc">
+      Expert ophthalmological care in Quezon City. Comprehensive eye exams, cataract surgery, glaucoma management, and advanced treatments for all eye conditions.
+    </p>
+    <div class="hero-actions">
+      <a href="#appointment" class="btn-primary">Book a Consultation</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <svg class="eye-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="32" cy="32" rx="28" ry="16" stroke="#c9a96e" stroke-width="1.5"/>
+        <circle cx="32" cy="32" r="8" stroke="#c9a96e" stroke-width="1.5"/>
+        <circle cx="32" cy="32" r="3" fill="#c9a96e"/>
+        <circle cx="34" cy="30" r="1" fill="rgba(201,169,110,0.5)"/>
+      </svg>
+      <h3>Specialist Ophthalmology<br>Quezon City</h3>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <span class="num">DPAO</span>
+          <span class="label">Board Certified</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">2+</span>
+          <span class="label">Clinic Locations</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">MD</span>
+          <span class="label">Medical Doctor</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">QC</span>
+          <span class="label">Metro Manila</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-col fade-up">
+      <div class="about-portrait">
+        <span class="portrait-initials">JJC</span>
+      </div>
+      <div class="about-cert">
+        <span class="cert-num">DPAO</span>
+        <span class="cert-label">Diplomate · PAO</span>
+      </div>
+    </div>
+    <div class="about-content fade-up">
+      <p class="section-label">About the Doctor</p>
+      <h2 class="section-title">Dr. Joselito Joel R.<br><em>Castro Jr., MD</em></h2>
+      <div class="divider"></div>
+      <p>
+        Dr. Joselito Joel R. Castro Jr. is a board-certified ophthalmologist and a Diplomate of the Philippine Academy of Ophthalmology (DPAO). He provides comprehensive eye care services to patients across Metro Manila and surrounding provinces.
+      </p>
+      <p>
+        With a commitment to excellence in patient care, Dr. Castro offers a wide range of ophthalmic services — from routine eye examinations to advanced surgical procedures — at multiple clinical locations in Quezon City.
+      </p>
+      <ul class="credential-list">
+        <li>Doctor of Medicine (MD)</li>
+        <li>Diplomate, Philippine Academy of Ophthalmology (DPAO)</li>
+        <li>Practicing at General Miguel M. Malvar Medical Foundation, Quezon City</li>
+        <li>Affiliated with New Era General Hospital, Commonwealth Avenue</li>
+        <li>Accredited by major HMO and government health programs</li>
+      </ul>
+      <a href="#appointment" class="btn-primary">Schedule a Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="fade-up">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Comprehensive<br><em>Eye Care Services</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="24" cy="24" rx="20" ry="12" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="6" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+      </svg>
+      <h3>Comprehensive Eye Exam</h3>
+      <p>Full evaluation of visual acuity, eye pressure, and overall ocular health. Suitable for routine check-ups and early detection of conditions.</p>
+    </div>
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 24 C8 14 40 14 40 24 C40 34 8 34 8 24Z" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M16 18 L12 12 M32 18 L36 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Cataract Evaluation & Surgery</h3>
+      <p>Diagnosis and surgical management of cataracts, restoring clear vision through modern phacoemulsification techniques.</p>
+    </div>
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="14" width="32" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M16 24 h16 M24 18 v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Glaucoma Screening & Management</h3>
+      <p>Tonometry, optic nerve assessment, and visual field testing for early glaucoma detection and ongoing treatment planning.</p>
+    </div>
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M24 16 v16 M16 24 h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <h3>Retinal Disease Care</h3>
+      <p>Evaluation and management of diabetic retinopathy, macular degeneration, and other posterior segment disorders.</p>
+    </div>
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 36 L24 12 L36 36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 28 h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <h3>Refraction & Prescription</h3>
+      <p>Accurate determination of refractive errors — myopia, hyperopia, astigmatism — with updated lens prescriptions.</p>
+    </div>
+    <div class="service-card fade-up">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="28" height="28" rx="3" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 22 h28 M22 10 v28" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <h3>Pediatric Ophthalmology</h3>
+      <p>Specialized eye care for children including amblyopia (lazy eye), strabismus, and visual development assessments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLINICS -->
+<section id="clinics">
+  <div class="fade-up">
+    <p class="section-label" style="color:var(--gold)">Our Locations</p>
+    <h2 class="section-title" style="color:var(--white)">Clinic<br><em style="color:var(--gold-light)">Schedules</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="clinics-grid">
+    <div class="clinic-card fade-up">
+      <div class="clinic-num">01</div>
+      <h3>General Miguel M. Malvar Medical Foundation</h3>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>531 Commonwealth Avenue, Quezon City, 1100 Metro Manila</span>
+      </div>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 11.79a19.79 19.79 0 01-3.07-8.67A2 2 0 011.93 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>(02) 8932 8867</span>
+      </div>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>Please call for current schedule and availability</span>
+      </div>
+      <span class="schedule-badge">Primary Clinic</span>
+    </div>
+    <div class="clinic-card fade-up">
+      <div class="clinic-num">02</div>
+      <h3>New Era General Hospital</h3>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Commonwealth Avenue cor. Tandang Sora, New Era, Quezon City</span>
+      </div>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 11.79a19.79 19.79 0 01-3.07-8.67A2 2 0 011.93 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>+632 8714-6344</span>
+      </div>
+      <div class="clinic-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>Please contact hospital for current clinic days</span>
+      </div>
+      <span class="schedule-badge">Affiliated Hospital</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div id="map-section">
+  <div class="map-wrapper">
+    <div class="map-info fade-up">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Getting<br><em>Here</em></h2>
+      <div class="divider"></div>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <strong>Primary Address</strong>
+          <span>531 Commonwealth Avenue<br>General Miguel M. Malvar Medical Foundation<br>Quezon City, 1100 Metro Manila</span>
+        </div>
+      </div>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 11.79a19.79 19.79 0 01-3.07-8.67A2 2 0 011.93 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div>
+          <strong>Phone</strong>
+          <span>(02) 8932 8867</span>
+        </div>
+      </div>
+      <div class="map-detail">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div>
+          <strong>Clinic Hours</strong>
+          <span>Please call ahead to confirm<br>schedule and availability</span>
+        </div>
+      </div>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.6!2d121.048!3d14.677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b75a31b27711%3A0xed6bd4dcdff5e924!2sDr.%20Joselito%20Joel%20R.%20Castro%20Jr%20DPAO!5e0!3m2!1sen!2sph!4v1"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Clinic Location Map">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="appt-grid">
+    <div class="fade-up">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Book an<br><em>Appointment</em></h2>
+      <div class="divider"></div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 11.79a19.79 19.79 0 01-3.07-8.67A2 2 0 011.93 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <strong>Telephone</strong>
+          <span>(02) 8932 8867</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <strong>Primary Clinic</strong>
+          <span>531 Commonwealth Ave, Quezon City</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div>
+          <strong>Appointment Policy</strong>
+          <span>Walk-ins welcome; advance booking recommended</span>
+        </div>
+      </div>
+      <div class="trust-badges">
+        <div class="trust-badge">PhilHealth Accredited</div>
+        <div class="trust-badge">HMO Accepted</div>
+        <div class="trust-badge">Senior Citizen Discount</div>
+      </div>
+    </div>
+    <div class="appt-form-wrap fade-up">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Juan">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Dela Cruz">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+63 9XX XXX XXXX">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="juan@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Clinic</label>
+          <select>
+            <option value="">Select clinic…</option>
+            <option>Malvar Medical Foundation</option>
+            <option>New Era General Hospital</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select service…</option>
+            <option>Comprehensive Eye Exam</option>
+            <option>Cataract Consultation</option>
+            <option>Glaucoma Check</option>
+            <option>Retinal Evaluation</option>
+            <option>Refraction / Prescription</option>
+            <option>Pediatric Eye Care</option>
+            <option>Follow-up Visit</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message / Concerns (optional)</label>
+        <textarea placeholder="Briefly describe your symptoms or questions…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(event)">Send Appointment Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        Dr. J.J.R. Castro Jr.
+        <span>MD, DPAO · Ophthalmologist</span>
+      </div>
+      <p>Providing expert, compassionate eye care to patients across Quezon City and Metro Manila. Your vision is our priority.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About Dr. Castro</a>
+      <a href="#services">Eye Care Services</a>
+      <a href="#clinics">Clinic Locations</a>
+      <a href="#appointment">Book Appointment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>(02) 8932 8867</p>
+      <p>531 Commonwealth Ave</p>
+      <p>Quezon City, Metro Manila</p>
+      <p style="margin-top:0.5rem; color:rgba(255,255,255,0.25); font-size:0.78rem;">Malvar Medical Foundation, Room 531</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Dr. Joselito Joel R. Castro Jr., MD, DPAO. All rights reserved.</p>
+    <p>Diplomate · Philippine Academy of Ophthalmology</p>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div id="toast">✓ Your appointment request has been received. We'll contact you shortly.</div>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  // Mobile menu toggle
+  function toggleMenu(btn) {
+    const links = document.querySelector('.nav-links');
+    const isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? 'none' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '70px';
+    links.style.left = '0'; links.style.right = '0';
+    links.style.background = '#0b1f3a';
+    links.style.padding = '1.5rem 8%';
+    links.style.borderBottom = '1px solid rgba(201,169,110,0.2)';
+    if (isOpen) links.style.display = 'none';
+  }
+
+  // Smooth nav stagger on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero-text > *').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 200 + i * 120);
+    });
+  });
+</script>
+</body>
+</html>
